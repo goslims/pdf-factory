@@ -45,7 +45,7 @@ class MyProvider extends Contract {
 }
 
 Factory::registerProvider('MyProvider', MyProvider::class);
-Factory::use('MyProvider');
+Factory::useProvider('MyProvider');
 
 if (isset($_GET['download'])) {
     Factory::download('harno.pdf');
