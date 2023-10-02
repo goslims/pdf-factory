@@ -23,7 +23,7 @@ final class Factory {
         self::getInstance()->providers[$name] = $providerClass;
     }
 
-    public static function use(string $providerName, array $options = [])
+    public static function useProvider(string $providerName, array $options = [])
     {
         $class = self::getInstance()->providers[$providerName]??null;
         if ($class === null) throw new \Exception("$providerName isn't registered!");
