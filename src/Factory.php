@@ -5,6 +5,10 @@ final class Factory {
     private static ?Factory $instance = null;
     private array $providers = [];
     private ?object $pdf = null;
+    private array $providerCommands = [
+        'setContent','download', 
+        'stream', 'saveToFile'
+    ];
 
     private function __construct() {}
 
@@ -30,21 +34,11 @@ final class Factory {
         self::getInstance()->pdf = $providerInstance;
     }
 
-    public static function download(string $filname):void
+    public static function __callStatic(string $method, array $arguments)
     {
-        self::getInstance()->pdf->setContent();
-        self::getInstance()->pdf->download($filname);
-    }
-    
-    public static function stream():void
-    {
-        self::getInstance()->pdf->setContent();
-        self::getInstance()->pdf->stream();
-    }
-    
-    public static function saveToFile(string $filname):void
-    {
-        self::getInstance()->pdf->setContent();
-        self::getInstance()->pdf->saveToFile($filname);
+        if (in_array($method, self::getInstance()->providerCommands));
+        {
+            return call_user_func_array([self::getInstance()->pdf, $method], $arguments);
+        }
     }
 }

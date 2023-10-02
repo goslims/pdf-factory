@@ -17,7 +17,7 @@ abstract class Contract
     }
 
     abstract protected function setPdf():void;
-    abstract protected function setContent(array $data = []):void;
+    abstract protected function setContent(array $data = []):self;
     abstract protected function download(string $filname):void;
     abstract protected function stream(?string $filname = null, ?array $options = null):void;
     abstract protected function saveToFile(string $filepath, ?Closure $callback = null):void;
