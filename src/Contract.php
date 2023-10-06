@@ -5,13 +5,13 @@ use Closure;
 
 abstract class Contract
 {
-    protected string $name = '';
+    protected static string $name = '';
     protected ?object $pdf = null;
 
     public function __construct()
     {
-        if (empty($this->name)) {
-            $this->name = '123';
+        if (empty(self::$name)) {
+            self::$name = '123';
         }
         $this->setPdf();
     }
