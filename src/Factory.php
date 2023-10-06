@@ -20,7 +20,8 @@ final class Factory {
 
     private array $providerCommands = [
         'setContent','download', 
-        'stream', 'saveToFile'
+        'stream', 'saveToFile',
+        'preview'
     ];
 
     private function __construct() {}

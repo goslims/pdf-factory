@@ -29,6 +29,17 @@ abstract class Contract
     }
 
     /**
+     * Preview data without parsing content
+     * a.k.d designer mode
+     *
+     * @return void
+     */
+    public function preview()
+    {
+        $this->setContent()->stream();
+    }
+
+    /**
      * Set your PDF Core Engine instance
      * to $pdf property
      *
